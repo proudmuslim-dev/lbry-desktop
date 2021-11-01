@@ -68,6 +68,10 @@ export default function CollectionsListMine(props: Props) {
     filteredCollections = collectionsToShow.slice(0, COLLECTION_SHOW_COUNT) || [];
   }
 
+  const totalLength = collectionsToShow ? collectionsToShow.length : 0;
+  const filteredLength = filteredCollections.length;
+  const isTruncated = totalLength > filteredLength;
+
   const watchLater = builtinCollectionsList.find((list) => list.id === COLLECTIONS_CONSTS.WATCH_LATER_ID);
   const favorites = builtinCollectionsList.find((list) => list.id === COLLECTIONS_CONSTS.FAVORITES_ID);
   const builtin = [watchLater, favorites];
@@ -142,34 +146,44 @@ export default function CollectionsListMine(props: Props) {
             )}
           </h1>
         </div>
-        <div className="section__header--actions">
-          <div className="claim-search__wrapper">
-            <div className="claim-search__menu-group">
-              {COLLECTION_FILTERS.map((value) => (
-                <Button
-                  label={__(value)}
-                  key={value}
-                  button="alt"
-                  onClick={() => setFilterType(value)}
-                  className={classnames('button-toggle', {
-                    'button-toggle--active': filterType === value,
-                  })}
-                />
-              ))}
+        <div className="section__header-action-stack">
+          <div className="section__header--actions">
+            <div className="claim-search__wrapper">
+              <div className="claim-search__menu-group">
+                {COLLECTION_FILTERS.map((value) => (
+                  <Button
+                    label={__(value)}
+                    key={value}
+                    button="alt"
+                    onClick={() => setFilterType(value)}
+                    className={classnames('button-toggle', {
+                      'button-toggle--active': filterType === value,
+                    })}
+                  />
+                ))}
+              </div>
             </div>
+            <Form onSubmit={() => {}} className="wunderbar--inline">
+              <Icon icon={ICONS.SEARCH} />
+              <FormField
+                onFocus={onTextareaFocus}
+                onBlur={onTextareaBlur}
+                className="wunderbar__input--inline"
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+                type="text"
+                placeholder={__('Search')}
+              />
+            </Form>
           </div>
-          <Form onSubmit={() => {}} className="wunderbar--inline">
-            <Icon icon={ICONS.SEARCH} />
-            <FormField
-              onFocus={onTextareaFocus}
-              onBlur={onTextareaBlur}
-              className="wunderbar__input--inline"
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              type="text"
-              placeholder={__('Search')}
-            />
-          </Form>
+          {isTruncated && (
+            <p className="collection-grid__results-summary">
+              {__(`Showing %filtered% results of %total%`, {
+                filtered: filteredLength,
+                total: totalLength,
+              })}
+            </p>
+          )}
         </div>
         {Boolean(hasCollections) && (
           <div>
