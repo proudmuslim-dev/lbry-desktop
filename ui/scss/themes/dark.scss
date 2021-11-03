@@ -10,11 +10,11 @@
   --color-secondary-alt-3: #2c5c8c;
 
   // Structure
-  --color-background: var(--color-gray-9);
+  --color-background: #000000;
   --color-background-overlay: #21252999;
-  --color-border: #333338;
-  --color-card-background: var(--color-gray-8);
-  --color-card-background-highlighted: var(--color-gray-7);
+  --color-border: #192330;
+  --color-card-background: #0A0E14;
+  --color-card-background-highlighted: #192330;
 
   // Text
   --color-text: var(--color-white);
@@ -33,10 +33,10 @@
   --color-tag-words-bg-hover: var(--color-gray-4);
 
   // Header
-  --color-header-background: var(--color-gray-8);
-  --color-header-button: var(--color-gray-6);
-  --color-header-button-hover: var(--color-gray-6);
-  --color-header-button-active: var(--color-gray-6);
+  --color-header-background: #0A0E14;
+  --color-header-button: #192330;
+  --color-header-button-hover: #192330;
+  --color-header-button-active: #192330;
 
   // Button
   --color-button-primary-bg: var(--color-primary-alt);
@@ -48,7 +48,7 @@
   --color-button-secondary-bg-hover: var(--color-secondary-alt-3);
   --color-button-secondary-text: var(--color-gray-2);
   --color-button-alt-bg: var(--color-gray-7);
-  --color-button-alt-bg-hover: var(--color-gray-6);
+  --color-button-alt-bg-hover: #192330;
   --color-button-alt-text: var(--color-gray-1);
   --color-button-border: var(--color-gray-5);
   --color-button-toggle-text: var(--color-gray-1);
@@ -61,7 +61,7 @@
   --color-input-label: var(--color-gray-3);
   --color-input-placeholder: var(--color-gray-1);
   --color-input-bg: var(--color-header-button);
-  --color-input-bg-copyable: var(--color-gray-6);
+  --color-input-bg-copyable: #192330;
   --color-input-border: var(--color-border);
   --color-input-border-active: var(--color-secondary);
   --color-input-toggle: var(--color-primary-alt-3);
